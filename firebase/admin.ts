@@ -24,3 +24,5 @@ function initFirebaseAdmin() {
 }
 
 export const { auth, db } = initFirebaseAdmin();
+export const adminAuth = admin.auth();
+export const adminDb = admin.firestore();
