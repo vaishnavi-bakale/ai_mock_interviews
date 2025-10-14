@@ -22,21 +22,13 @@ const Page = async () => {
         userName={user.name}
         userId={user.id}
         profileImage={user.profileURL}
+
         type="generate"
       />
-
-      {/* Example display */}
-      <div>
-        <h4>Your Interviews</h4>
-        <pre>{JSON.stringify(userInterviews, null, 2)}</pre>
-      </div>
-
-      <div>
-        <h4>Latest Interviews</h4>
-        <pre>{JSON.stringify(latestInterviews, null, 2)}</pre>
-      </div>
     </>
   );
 };
 
 export default Page;
+
+

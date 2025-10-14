@@ -135,7 +135,7 @@ export async function isAuthenticated() {
   }
 }
 
-export async function getInterviewByUserId(userId: string): Promise<Interview[] | null> {
+/*export async function getInterviewByUserId(userId: string): Promise<Interview[] | null> {
   try {
     const snapshot = await db
       .collection("interviews")
@@ -157,6 +157,4 @@ export async function getInterviewByUserId(userId: string): Promise<Interview[] 
   }
   // In: src/lib/actions/auth.action.ts (or your correct path)
 
-}
-
-
+}/*
