@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 const SESSION_DURATION = 60 * 60 * 24 * 7; // 7 days
 
 // ------------------------------------------------------
-// Type Definitions (you can adjust as needed)
+// Type Definitions
 // ------------------------------------------------------
 type SignUpParams = {
   uid: string;
@@ -34,7 +34,7 @@ export async function setSessionCookie(idToken: string) {
   const cookieStore = await cookies();
 
   const sessionCookie = await auth.createSessionCookie(idToken, {
-    expiresIn: SESSION_DURATION * 1000, // milliseconds
+    expiresIn: SESSION_DURATION * 1000,
   });
 
   cookieStore.set("session", sessionCookie, {
@@ -163,5 +163,28 @@ export async function isAuthenticated() {
   } catch (error) {
     console.error("Error checking authentication:", error);
     return false;
+  }
+}
+
+// ------------------------------------------------------
+// GET INTERVIEWS BY USER ID
+// ------------------------------------------------------
+export async function getInterviewByUserId(userId: string) {
+  try {
+    const snapshot = await db
+      .collection("interviews")
+      .where("userId", "==", userId)
+      .orderBy("createdAt", "desc")
+      .get();
+
+    const interviews = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return interviews;
+  } catch (error) {
+    console.error("🔥 Error fetching interviews:", error);
+    return [];
   }
 }

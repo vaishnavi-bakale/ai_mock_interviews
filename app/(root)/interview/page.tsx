@@ -1,5 +1,7 @@
 import Agent from "@/components/Agent";
-import { getCurrentUser, getInterviewByUserId } from "@/lib/actions/auth.action";
+import { getCurrentUser } from "@/lib/actions/auth.action";
+import { getInterviewByUserId } from "@/lib/actions/auth.action";
+
 import { getLatestInterviews } from "@/lib/actions/general.action";
 
 // 👇 Add this line

@@ -10,6 +10,8 @@ import {
   getLatestInterviews,
 } from "@/lib/actions/general.action";
 
+export const dynamic = "force-dynamic";
+
 // Dummy data placeholder
 const dummyInterviews = [
   {
