@@ -2,6 +2,9 @@ import Agent from "@/components/Agent";
 import { getCurrentUser, getInterviewByUserId } from "@/lib/actions/auth.action";
 import { getLatestInterviews } from "@/lib/actions/general.action";
 
+// 👇 Add this line
+export const dynamic = 'force-dynamic';
+
 const Page = async () => {
   const user = await getCurrentUser();
 
@@ -22,7 +25,6 @@ const Page = async () => {
         userName={user.name}
         userId={user.id}
         profileImage={user.profileURL}
-
         type="generate"
       />
     </>
@@ -30,5 +32,3 @@ const Page = async () => {
 };
 
 export default Page;
-
-
