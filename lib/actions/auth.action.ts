@@ -3,6 +3,7 @@
 import { auth, db } from "@/firebase/admin";
 import { cookies } from "next/headers";
 
+
 const SESSION_DURATION = 60 * 60 * 24 * 7; // 7 days
 
 // ------------------------------------------------------
@@ -169,13 +170,10 @@ export async function isAuthenticated() {
 // ------------------------------------------------------
 // GET INTERVIEWS BY USER ID
 // ------------------------------------------------------
-export async function getInterviewByUserId(userId: string) {
+export const getInterviewByUserId = async (userId: string) => {
   try {
-    const snapshot = await db
-      .collection("interviews")
-      .where("userId", "==", userId)
-      .orderBy("createdAt", "desc")
-      .get();
+    const interviewsRef = db.collection("interviews");
+    const snapshot = await interviewsRef.where("userId", "==", userId).get();
 
     const interviews = snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -184,7 +182,7 @@ export async function getInterviewByUserId(userId: string) {
 
     return interviews;
   } catch (error) {
-    console.error("🔥 Error fetching interviews:", error);
-    return [];
+    console.error("Error fetching interviews by userId:", error);
+    throw new Error("Failed to fetch user interviews");
   }
-}
+};
