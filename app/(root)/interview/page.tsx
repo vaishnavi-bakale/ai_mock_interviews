@@ -3,6 +3,7 @@ import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewByUserId } from "@/lib/actions/auth.action";
 
 import { getLatestInterviews } from "@/lib/actions/general.action";
+import { redirect } from "next/navigation";
 
 // 👇 Add this line
 export const dynamic = 'force-dynamic';
@@ -11,8 +12,8 @@ const Page = async () => {
   const user = await getCurrentUser();
 
   if (!user) {
-    return <div>Please sign in to continue.</div>;
-  }
+  redirect("/sign-in");
+}
 
   const [userInterviews, latestInterviews] = await Promise.all([
     getInterviewByUserId(user.id),
