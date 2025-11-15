@@ -1,19 +1,17 @@
+export const dynamic = 'force-dynamic';
+
 import Agent from "@/components/Agent";
+import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewByUserId } from "@/lib/actions/auth.action";
-
 import { getLatestInterviews } from "@/lib/actions/general.action";
-import { redirect } from "next/navigation";
-
-// 👇 Add this line
-export const dynamic = 'force-dynamic';
 
 const Page = async () => {
   const user = await getCurrentUser();
 
   if (!user) {
-  redirect("/sign-in");
-}
+    redirect("/sign-in"); // ✅ redirect instead of returning JSX
+  }
 
   const [userInterviews, latestInterviews] = await Promise.all([
     getInterviewByUserId(user.id),
