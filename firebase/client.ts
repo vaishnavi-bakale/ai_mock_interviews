@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyD2jJF2xXMekga1BSjKB2CNID7ALyDR5u8",
   authDomain: "prepwise-e7a15.firebaseapp.com",
   projectId: "prepwise-e7a15",
-  storageBucket: "prepwise-e7a15.firebasestorage.app",
+  storageBucket: "prepwise-e7a15.appspot.com",
   messagingSenderId: "623730268541",
   appId: "1:623730268541:web:d0c97ddbcf30027ca81414",
   measurementId: "G-HBR8XNGJMC"
